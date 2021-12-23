@@ -43,25 +43,24 @@
 
     // Task 3
 
-    const table = newTable();
+    const table = newTable(10, 10);
     
-    function newTable() {
+    function newTable(cols, rows) {
         const table = document.createElement('table');
-        for(let i = 1; i <= 10; i++) {
+        table.setAttribute('border', '1');
+        for(let i = 0; i < cols; i++) {
             const tr = document.createElement('tr');
-            table.appendChild(tr);
-            for(let j = 1; j <= 10; j++) {
+            table.append(tr);
+            for(let j = 1; j <= rows; j++) {
                 const td = document.createElement('td');
-                tr.appendChild(td); 
-                for(let k = 1; k <= 100; k++) {
-                    tr.appendChild(td).innerHTML = k; 
-                }
-            } 
+                tr.append(td);
+                td.innerHTML = i * cols + j;
+            }
         }
         return table;
     }
 
-    list.after(table)
-    console.log(newTable())
+    list.after(table);
+    console.log(newTable(10, 10));
 
 })();
