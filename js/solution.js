@@ -1,6 +1,7 @@
 'use strict';
 
 (() => {
+
     // Task 1
     
     const ul = document.getElementById('ulId');
@@ -20,6 +21,7 @@
     ul.lastElementChild.innerHTML = 'Привет, меня зовут Юра';
     ul.firstElementChild.setAttribute('data-my-name', 'Yurii');
     ul.removeAttribute('data-dog-tail');
+
 
     // Task 2
 
@@ -41,26 +43,29 @@
     console.log(generateList(numArr));
     ul.after(list);
 
+
     // Task 3
 
-    const table = newTable(10, 10);
-    
-    function newTable(cols, rows) {
+    function getTable(cols, rows) {
         const table = document.createElement('table');
-        table.setAttribute('border', '1');
+        table.setAttribute('border', '2px');
+        let num = 0;
+
         for(let i = 0; i < cols; i++) {
             const tr = document.createElement('tr');
             table.append(tr);
-            for(let j = 1; j <= rows; j++) {
+
+            for(let j = 0; j < rows; j++) {
                 const td = document.createElement('td');
                 tr.append(td);
-                td.innerHTML = i * cols + j;
+                td.innerHTML = ++num;
             }
         }
+
         return table;
     }
 
-    list.after(table);
-    console.log(newTable(10, 10));
-
+    const newTable = getTable(10, 10);
+    list.after(newTable);
+    
 })();
